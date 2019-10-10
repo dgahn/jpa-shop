@@ -5,10 +5,12 @@
 
     <persistence-unit name="jpashop">
 
+        <class>io.github.dgahn.jpashop.domain.Category</class>
+        <class>io.github.dgahn.jpashop.domain.Delivery</class>
+        <class>io.github.dgahn.jpashop.domain.Item</class>
+        <class>io.github.dgahn.jpashop.domain.OrderItem</class>
         <class>io.github.dgahn.jpashop.domain.Member</class>
         <class>io.github.dgahn.jpashop.domain.Order</class>
-        <class>io.github.dgahn.jpashop.domain.OrderItem</class>
-        <class>io.github.dgahn.jpashop.domain.Item</class>
 
         <properties>
             <!-- 필수 속성 -->

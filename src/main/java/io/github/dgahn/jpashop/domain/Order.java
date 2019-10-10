@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,8 +31,12 @@ public class Order {
   @JoinColumn(name = "MEMBER_ID") // 외래키로 멤버의 멤버아이디를 가지고 있음
   private Member member;
 
+  @OneToOne
+  @JoinColumn(name = "DELIVERY_ID")
+  private Delivery delivery;
+
   @OneToMany(mappedBy = "order")
-  private List<OrderItem> orderItems;
+  private List<OrderItem> orderItems = new ArrayList<>();
 
   private LocalDateTime orderDate;
 
