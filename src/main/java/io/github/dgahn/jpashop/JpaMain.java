@@ -1,5 +1,7 @@
 package io.github.dgahn.jpashop;
 
+import io.github.dgahn.jpashop.domain.Book;
+import io.github.dgahn.jpashop.domain.Item;
 import io.github.dgahn.jpashop.domain.Order;
 import io.github.dgahn.jpashop.domain.OrderItem;
 
@@ -19,6 +21,16 @@ public class JpaMain {
     tx.begin();
 
     try {
+
+      Book book = new Book();
+      book.setName("JPA");
+      book.setAuthor("김영한");
+
+      em.persist(book);
+
+      Book book1 = em.find(Book.class, book.getId());
+      System.out.println(book1.getId());
+
       tx.commit();
     }catch (Exception e) {
       tx.rollback();

@@ -5,6 +5,9 @@
 
     <persistence-unit name="jpashop">
 
+        <class>io.github.dgahn.jpashop.domain.Album</class>
+        <class>io.github.dgahn.jpashop.domain.Book</class>
+        <class>io.github.dgahn.jpashop.domain.Movie</class>
         <class>io.github.dgahn.jpashop.domain.Category</class>
         <class>io.github.dgahn.jpashop.domain.Delivery</class>
         <class>io.github.dgahn.jpashop.domain.Item</class>
