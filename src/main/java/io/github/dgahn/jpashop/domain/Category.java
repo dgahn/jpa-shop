@@ -2,6 +2,7 @@ package io.github.dgahn.jpashop.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,7 +23,7 @@ public class Category {
 
   private String name;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "PARENT_ID")
   private Category parent;
 

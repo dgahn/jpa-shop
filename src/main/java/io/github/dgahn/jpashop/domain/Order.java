@@ -1,9 +1,11 @@
 package io.github.dgahn.jpashop.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,15 +29,15 @@ public class Order {
 
   //  @Column(name = "MEMBER_ID")
 //  private Long memberId;
-  @ManyToOne // 주문 입장에서 하나의 멤버가 여러개의 주문을 함.
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 주문 입장에서 하나의 멤버가 여러개의 주문을 함.
   @JoinColumn(name = "MEMBER_ID") // 외래키로 멤버의 멤버아이디를 가지고 있음
   private Member member;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "DELIVERY_ID")
   private Delivery delivery;
 
-  @OneToMany(mappedBy = "order")
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
   private List<OrderItem> orderItems = new ArrayList<>();
 
   private LocalDateTime orderDate;
